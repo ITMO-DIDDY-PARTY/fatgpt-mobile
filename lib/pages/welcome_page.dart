@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../utils/style/colors.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -47,14 +49,14 @@ class WelcomePage extends StatelessWidget {
                           height: 24,
                         ),
                         Text(
-                          'FatGPT',
+                          AppLocalizations.of(context)!.appTitle,
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
                               ?.copyWith(color: FatGPTColors.textColor),
                         ),
                         Text(
-                          'Generate meal ideas with fridge photo',
+                          AppLocalizations.of(context)!.appDescription,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium
@@ -83,7 +85,7 @@ class WelcomePage extends StatelessWidget {
                     _handleTapOnGetStarted(context);
                   },
                   child: Text(
-                    "Get started",
+                    AppLocalizations.of(context)!.welcomeGetStarted,
                     style: Theme.of(context)
                         .textTheme
                         .labelMedium

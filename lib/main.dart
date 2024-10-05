@@ -1,6 +1,7 @@
 import 'package:fat_gpt/pages/welcome_page.dart';
 import 'package:fat_gpt/utils/style/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fat GPT',
       theme: FatGPTThemes.darkTheme,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const WelcomePage(),
     );
   }
