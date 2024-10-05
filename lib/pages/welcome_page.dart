@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +7,12 @@ import '../utils/style/colors.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
+
+  void _handleTapOnGetStarted(BuildContext context) {
+    // Navigator.of(context).push(MaterialPageRoute<void>(
+    //   builder: (BuildContext context) => CameraPage(),
+    // ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,43 +36,42 @@ class WelcomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
-                Image(image: AssetImage('images/logo.png')),
-                Container(
-                  // decoration: BoxDecoration(
-                  //   color: FatGPTColors.cardBackground,
-                  //   borderRadius: BorderRadius.circular(12),
-                  // ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 12,
-                          ),
-                          Text(
-                            'FatGPT',
-                            style: TextStyle(fontSize: 24, color: Colors.white),
-                          ),
-                          Text(
-                            'Generate meal ideas with fridge photo',
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                const Spacer(),
+                const Image(image: AssetImage('images/logo.png')),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          'FatGPT',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(color: FatGPTColors.textColor),
+                        ),
+                        Text(
+                          'Generate meal ideas with fridge photo',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(color: FatGPTColors.textColor),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 64,
                 ),
                 Spacer(),
                 ElevatedButton(
-                  child: Text("Get started"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: FatGPTColors.accent,
                     minimumSize: Size.fromHeight(48),
@@ -72,7 +79,16 @@ class WelcomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _handleTapOnGetStarted(context);
+                  },
+                  child: Text(
+                    "Get started",
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelMedium
+                        ?.copyWith(color: FatGPTColors.accentButtonTextColor),
+                  ),
                 ),
               ],
             ),
