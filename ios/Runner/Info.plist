@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+    <string>Just so you can take a picture of your fridge.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Just so you can take a picture of your fridge.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Just so you can select a picture of your fridge.</string>
 </dict>
 </plist>
