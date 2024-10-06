@@ -1,19 +1,34 @@
 import 'dart:ui';
 
+import 'package:fat_gpt/services/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../utils/style/colors.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  final PhotoAnalyzerApi photoAnalyzerApi;
 
-  void _handleTapOnGetStarted(BuildContext context) {
-    // Navigator.of(context).push(MaterialPageRoute<void>(
-    //   builder: (BuildContext context) => CameraPage(),
-    // ));
+  const WelcomePage({
+    super.key,
+    required this.photoAnalyzerApi,
+  });
+
+  void _handleTapOnGetStarted(BuildContext context) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+
+    if (image != null) {
+      String recipe = await photoAnalyzerApi.getRecipeFromPhoto(image);
+      debugPrint("[TEST] displaying recipe ${recipe}");
+      // TODO: navigate to page with recipe viewer
+      // Navigator.of(context).push(MaterialPageRoute<void>(
+      //   builder: (BuildContext context) => CameraPage(),
+      // ));
+    }
   }
 
   @override
