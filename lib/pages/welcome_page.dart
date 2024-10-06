@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fat_gpt/pages/recipe_page.dart';
 import 'package:fat_gpt/services/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,9 @@ class WelcomePage extends StatelessWidget {
 
     if (image != null) {
       String recipe = await photoAnalyzerApi.getRecipeFromPhoto(image);
-      debugPrint("[TEST] displaying recipe ${recipe}");
-      // TODO: navigate to page with recipe viewer
-      // Navigator.of(context).push(MaterialPageRoute<void>(
-      //   builder: (BuildContext context) => CameraPage(),
-      // ));
+      Navigator.of(context).push(MaterialPageRoute<void>(
+        builder: (BuildContext context) => RecipePage(recipeContent: recipe),
+      ));
     }
   }
 

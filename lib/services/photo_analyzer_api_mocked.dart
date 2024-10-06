@@ -5,8 +5,7 @@ class PhotoAnalyzerAPIMocked implements PhotoAnalyzerApi {
 
   @override
   Future<String> getRecipeFromPhoto(XFile photo) {
-    return Future.value("""
-    # Guacamole
+    return Future.value("""# Guacamole
 
 Some people call it guac.
 
