@@ -6,5 +6,6 @@
 
   "recipeTitle": "Рецепт",
 
-  "favoritesTitle": "Избранное"
+  "favoritesTitle": "Избранное",
+  "favoritesEmpty": "Тут пока ничего нет"
 }

@@ -43,7 +43,10 @@ class _WelcomePageState extends State<WelcomePage> {
           Recipe(recipeContent: recipeContent, photoPath: image.path);
       Navigator.of(context).push(MaterialPageRoute<void>(
         builder: (BuildContext context) => RecipePage(
-            recipe: recipe, photoAnalyzerApi: widget.photoAnalyzerApi),
+          recipe: recipe,
+          photoAnalyzerApi: widget.photoAnalyzerApi,
+          favoritesService: FavoritesServiceLocal(),
+        ),
       ));
     }
 

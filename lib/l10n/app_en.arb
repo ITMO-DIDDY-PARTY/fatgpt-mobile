@@ -6,5 +6,6 @@
 
   "recipeTitle": "Recipe",
 
-  "favoritesTitle": "Favorites"
+  "favoritesTitle": "Favorites",
+  "favoritesEmpty": "Nothing to show yet"
 }
