@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:fat_gpt/models/recipe.dart';
+import 'package:fat_gpt/pages/favorites_page.dart';
 import 'package:fat_gpt/pages/recipe_page.dart';
+import 'package:fat_gpt/services/favorites/favorites_service_local.dart';
 import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +37,13 @@ class _WelcomePageState extends State<WelcomePage> {
     final XFile? image = await picker.pickImage(source: ImageSource.camera);
 
     if (image != null) {
-      String recipeContent = await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
-      Recipe recipe = Recipe(recipeContent: recipeContent, photoPath: image.path);
+      String recipeContent =
+          await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
+      Recipe recipe =
+          Recipe(recipeContent: recipeContent, photoPath: image.path);
       Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (BuildContext context) => RecipePage(recipe: recipe, photoAnalyzerApi: widget.photoAnalyzerApi),
+        builder: (BuildContext context) => RecipePage(
+            recipe: recipe, photoAnalyzerApi: widget.photoAnalyzerApi),
       ));
     }
 
@@ -47,10 +52,30 @@ class _WelcomePageState extends State<WelcomePage> {
     });
   }
 
+  void _handleGoToFavorites() {
+    Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (BuildContext context) =>
+          FavoritesPage(favoritesService: FavoritesServiceLocal()),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Container(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        actions: [
+          IconButton(
+            onPressed: _handleGoToFavorites,
+            icon: Icon(Icons.favorite),
+            iconSize: 36,
+            color: FatGPTColors.accent,
+          ),
+        ],
+      ),
+      body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -70,7 +95,11 @@ class _WelcomePageState extends State<WelcomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Spacer(),
-                const Image(image: AssetImage('images/logo.png'), width: 100, height: 100,),
+                const Image(
+                  image: AssetImage('images/logo.png'),
+                  width: 100,
+                  height: 100,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
