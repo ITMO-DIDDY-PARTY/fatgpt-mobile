@@ -40,6 +40,8 @@ dependencies:
   intl: any
   image_picker: ^1.1.2
   flutter_markdown: ^0.7.3+2
+  http: ^1.2.2
+  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:
