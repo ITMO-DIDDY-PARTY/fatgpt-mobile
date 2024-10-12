@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fat_gpt/models/recipe.dart';
 import 'package:fat_gpt/pages/recipe_page.dart';
 import 'package:fat_gpt/services/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,21 +27,24 @@ class _WelcomePageState extends State<WelcomePage> {
   bool isLoading = false;
 
   void _handleTapOnGetStarted(BuildContext context) async {
+    setState(() {
+      isLoading = true;
+    });
+
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.camera);
 
     if (image != null) {
-      setState(() {
-        isLoading = true;
-      });
-      String recipe = await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
-      setState(() {
-        isLoading = false;
-      });
+      String recipeContent = await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
+      Recipe recipe = Recipe(recipeContent: recipeContent, photoPath: image.path);
       Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (BuildContext context) => RecipePage(recipeContent: recipe),
+        builder: (BuildContext context) => RecipePage(recipe: recipe, photoAnalyzerApi: widget.photoAnalyzerApi),
       ));
     }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -66,7 +70,7 @@ class _WelcomePageState extends State<WelcomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Spacer(),
-                const Image(image: AssetImage('images/logo.png')),
+                const Image(image: AssetImage('images/logo.png'), width: 100, height: 100,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
