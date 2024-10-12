@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:fat_gpt/models/recipe.dart';
 import 'package:fat_gpt/pages/recipe_page.dart';
-import 'package:fat_gpt/services/photo_analyzer_api.dart';
+import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
