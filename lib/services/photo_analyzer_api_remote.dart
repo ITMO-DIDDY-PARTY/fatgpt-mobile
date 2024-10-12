@@ -20,7 +20,7 @@ class PhotoAnalyzerAPIRemote implements PhotoAnalyzerApi {
       "X-API-KEY": "arsenmarkaryanfanclub20241008",
       // "content-type": "multipart/form-data"
     };
-    String uriString = 'http://178.62.214.131:7991/generate';
+    String uriString = 'http://134.209.136.171:8000/generate';
 
     // Uri uri = Uri.parse(uriString).replace(queryParameters: params);
 
