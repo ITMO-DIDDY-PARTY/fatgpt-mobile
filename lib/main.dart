@@ -1,5 +1,6 @@
 import 'package:fat_gpt/pages/welcome_page.dart';
 import 'package:fat_gpt/services/photo_analyzer_api_mocked.dart';
+import 'package:fat_gpt/services/photo_analyzer_api_remote.dart';
 import 'package:fat_gpt/utils/style/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: FatGPTThemes.darkTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: WelcomePage(photoAnalyzerApi: PhotoAnalyzerAPIMocked(),),
+      home: WelcomePage(photoAnalyzerApi: PhotoAnalyzerAPIRemote(),),
     );
   }
 }

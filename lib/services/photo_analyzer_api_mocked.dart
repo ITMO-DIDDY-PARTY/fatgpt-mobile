@@ -4,9 +4,9 @@ import 'package:image_picker/image_picker.dart';
 class PhotoAnalyzerAPIMocked implements PhotoAnalyzerApi {
 
   @override
-  Future<String> getRecipeFromPhoto(XFile photo) {
-    return Future.value("""
-    # Guacamole
+  Future<String> getRecipeFromPhoto(XFile photo) async {
+    String recipe = await Future.delayed(const Duration(seconds: 2), () {
+      return """# Guacamole
 
 Some people call it guac.
 
@@ -24,6 +24,8 @@ Some people call it guac.
 ---
 
 Remove flesh from avocado and roughly mash with fork. Season to taste with salt pepper and lemon juice.
-    """);
+    """;
+    });
+    return recipe;
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fat_gpt/pages/recipe_page.dart';
 import 'package:fat_gpt/services/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../utils/style/colors.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   final PhotoAnalyzerApi photoAnalyzerApi;
 
   const WelcomePage({
@@ -17,17 +18,28 @@ class WelcomePage extends StatelessWidget {
     required this.photoAnalyzerApi,
   });
 
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  bool isLoading = false;
+
   void _handleTapOnGetStarted(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.camera);
 
     if (image != null) {
-      String recipe = await photoAnalyzerApi.getRecipeFromPhoto(image);
-      debugPrint("[TEST] displaying recipe ${recipe}");
-      // TODO: navigate to page with recipe viewer
-      // Navigator.of(context).push(MaterialPageRoute<void>(
-      //   builder: (BuildContext context) => CameraPage(),
-      // ));
+      setState(() {
+        isLoading = true;
+      });
+      String recipe = await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
+      setState(() {
+        isLoading = false;
+      });
+      Navigator.of(context).push(MaterialPageRoute<void>(
+        builder: (BuildContext context) => RecipePage(recipeContent: recipe),
+      ));
     }
   }
 
@@ -88,25 +100,30 @@ class WelcomePage extends StatelessWidget {
                   height: 64,
                 ),
                 Spacer(),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: FatGPTColors.accent,
-                    minimumSize: Size.fromHeight(48),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: () {
-                    _handleTapOnGetStarted(context);
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.welcomeGetStarted,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelMedium
-                        ?.copyWith(color: FatGPTColors.accentButtonTextColor),
-                  ),
-                ),
+                () {
+                  return isLoading
+                      ? CircularProgressIndicator()
+                      : ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: FatGPTColors.accent,
+                            minimumSize: Size.fromHeight(48),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: () {
+                            _handleTapOnGetStarted(context);
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)!.welcomeGetStarted,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium
+                                ?.copyWith(
+                                    color: FatGPTColors.accentButtonTextColor),
+                          ),
+                        );
+                }()
               ],
             ),
           ),
