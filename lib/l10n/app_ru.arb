@@ -2,6 +2,10 @@
   "appTitle": "Fat GPT",
   "appDescription": "Генерируйте идеи для обедов по фото",
   "welcomeGetStarted": "Начать",
+  "welcomeFavoritesButtonTitle": "Сохранённые рецепты",
 
-  "recipeTitle": "Рецепт"
+  "recipeTitle": "Рецепт",
+
+  "favoritesTitle": "Избранное",
+  "favoritesEmpty": "Тут пока ничего нет"
 }
