@@ -37,17 +37,36 @@ class _WelcomePageState extends State<WelcomePage> {
     final XFile? image = await picker.pickImage(source: ImageSource.camera);
 
     if (image != null) {
-      String recipeContent =
-          await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
-      Recipe recipe =
-          Recipe(recipeContent: recipeContent, photoPath: image.path);
-      Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (BuildContext context) => RecipePage(
-          recipe: recipe,
-          photoAnalyzerApi: widget.photoAnalyzerApi,
-          favoritesService: FavoritesServiceLocal(),
-        ),
-      ));
+      try {
+        String recipeContent = await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
+        Recipe recipe = Recipe(recipeContent: recipeContent, photoPath: image.path);
+        Navigator.of(context).push(MaterialPageRoute<void>(
+          builder: (BuildContext context) => RecipePage(
+            recipe: recipe,
+            photoAnalyzerApi: widget.photoAnalyzerApi,
+            favoritesService: FavoritesServiceLocal(),
+          ),
+        ));
+      } catch (error) {
+        return showDialog<void>(
+          context: context,
+          barrierDismissible: false, // user must tap button!
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(AppLocalizations.of(context)!.error),
+              content: Text(error.toString()),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
     }
 
     setState(() {
