@@ -1,0 +1,13 @@
+{
+  "appTitle": "Fat GPT",
+  "appDescription": "Generate meal ideas with fridge photo",
+  "welcomeGetStarted": "Get started",
+  "welcomeFavoritesButtonTitle": "Favorite recipes",
+
+  "recipeTitle": "Recipe",
+
+  "favoritesTitle": "Favorites",
+  "favoritesEmpty": "Nothing to show yet",
+
+  "error": "Error"
+}
