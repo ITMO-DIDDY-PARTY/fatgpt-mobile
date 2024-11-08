@@ -1,15 +1,22 @@
+import 'package:fat_gpt/pages/auth_page.dart';
 import 'package:fat_gpt/pages/welcome_page.dart';
+import 'package:fat_gpt/services/auth/auth_service.dart';
 import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api_mocked.dart';
 import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api_remote.dart';
 import 'package:fat_gpt/utils/style/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  AuthRemoteService().checkExistingUser();
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -20,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: FatGPTThemes.darkTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: WelcomePage(photoAnalyzerApi: PhotoAnalyzerAPIRemote(),),
+      home: AuthPage(),
     );
   }
 }
