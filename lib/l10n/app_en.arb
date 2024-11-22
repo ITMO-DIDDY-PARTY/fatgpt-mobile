@@ -20,5 +20,8 @@
   "favoritesTitle": "Favorites",
   "favoritesEmpty": "Nothing to show yet",
 
+  "historyTitle": "History",
+  "historyEmpty": "Nothing to show yet",
+
   "error": "Error"
 }

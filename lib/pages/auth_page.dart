@@ -22,9 +22,11 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // user logged in
+            String token = snapshot.data!.token;
             return WelcomePage(
-              photoAnalyzerApi: PhotoAnalyzerAPIRemote(),
-              userDataService: UserDataService(token: snapshot.data!.token),
+              userId: token,
+              photoAnalyzerApi: PhotoAnalyzerAPIRemote(token: token),
+              userDataService: UserDataService(token: token),
             );
           } else {
             // user not logged in

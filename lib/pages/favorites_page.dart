@@ -35,7 +35,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   void _handleTapOnRecipe(Recipe recipe) {
     Navigator.of(context).push(MaterialPageRoute<void>(
       builder: (BuildContext context) => FavoriteRecipePage(
-        recipe: recipe,
+        recipe: recipe, isHistoryEntry: false,
       ),
     ));
   }

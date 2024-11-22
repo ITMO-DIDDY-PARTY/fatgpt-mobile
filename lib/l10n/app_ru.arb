@@ -20,5 +20,8 @@
   "favoritesTitle": "Избранное",
   "favoritesEmpty": "Тут пока ничего нет",
 
+  "historyTitle": "История",
+  "historyEmpty": "Тут пока ничего нет",
+
   "error": "Ошибка"
 }

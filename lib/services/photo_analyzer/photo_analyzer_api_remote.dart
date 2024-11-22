@@ -6,24 +6,33 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:developer';
 
 class PhotoAnalyzerAPIRemote implements PhotoAnalyzerApi {
+  final String token;
+
+  PhotoAnalyzerAPIRemote({required this.token});
+
   @override
   Future<String> getRecipeFromPhoto(XFile photo) async {
     Uint8List bytes = await photo.readAsBytes();
 
     String uriString = NetworkConstants.apiUrl('/generate');
 
+    Map<String, dynamic> queryParams = {"token": token};
+
     FormData formData = FormData.fromMap(
       {
-        "file": MultipartFile.fromBytes(bytes, filename: "file.jpg"),
+        "file": MultipartFile.fromBytes(bytes, filename: "${DateTime.now().toString()}.jpg"),
       },
     );
 
-    Response response = await Dio().post(uriString,
-        data: formData,
-        options: Options(headers: {
-          "Content-Type": "multipart/form-data",
-          'X-API-KEY': NetworkConstants.apiKey,
-        }));
+    Response response = await Dio().post(
+      uriString,
+      data: formData,
+      queryParameters: queryParams,
+      options: Options(headers: {
+        "Content-Type": "multipart/form-data",
+        'X-API-KEY': NetworkConstants.apiKey,
+      }),
+    );
 
     log("[TEST] ${response.data.toString()}");
     Map responseBody = response.data;

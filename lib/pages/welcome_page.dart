@@ -7,6 +7,7 @@ import 'package:fat_gpt/pages/recipe_page.dart';
 import 'package:fat_gpt/services/auth/auth_service.dart';
 import 'package:fat_gpt/services/auth/user_data_service.dart';
 import 'package:fat_gpt/services/favorites/favorites_service_local.dart';
+import 'package:fat_gpt/services/history/history_service_remote.dart';
 import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +16,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../utils/style/colors.dart';
+import 'history_page.dart';
 
 class WelcomePage extends StatefulWidget {
+  final String userId;
   final PhotoAnalyzerApi photoAnalyzerApi;
   final AuthRemoteService authRemoteService = AuthRemoteService();
   final UserDataService userDataService;
 
   WelcomePage({
     super.key,
+    required this.userId,
     required this.photoAnalyzerApi,
     required this.userDataService,
   });
@@ -121,6 +125,16 @@ class _WelcomePageState extends State<WelcomePage> {
     ));
   }
 
+  void _handleGoToHistory() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => HistoryPage(
+          historyService: HistoryServiceRemote(token: widget.userId),
+        ),
+      ),
+    );
+  }
+
   void _handleLogout() {
     widget.authRemoteService.logOut();
   }
@@ -140,6 +154,12 @@ class _WelcomePageState extends State<WelcomePage> {
             color: FatGPTColors.accent,
           ),
           Spacer(),
+          IconButton(
+            onPressed: _handleGoToHistory,
+            icon: Icon(Icons.history),
+            iconSize: 36,
+            color: FatGPTColors.accent,
+          ),
           IconButton(
             onPressed: _handleGoToFavorites,
             icon: Icon(Icons.favorite),
