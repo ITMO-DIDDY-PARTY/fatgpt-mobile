@@ -5,6 +5,8 @@ import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:developer';
 
+import 'package:uuid/uuid.dart';
+
 class PhotoAnalyzerAPIRemote implements PhotoAnalyzerApi {
   final String token;
 
@@ -20,7 +22,7 @@ class PhotoAnalyzerAPIRemote implements PhotoAnalyzerApi {
 
     FormData formData = FormData.fromMap(
       {
-        "file": MultipartFile.fromBytes(bytes, filename: "${DateTime.now().toString()}.jpg"),
+        "file": MultipartFile.fromBytes(bytes, filename: "${Uuid().v1()}.jpg"),
       },
     );
 
