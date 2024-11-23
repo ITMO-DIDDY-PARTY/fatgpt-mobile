@@ -9,8 +9,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavoriteRecipePage extends StatelessWidget {
   final Recipe recipe;
+  final bool isHistoryEntry;
 
-  const FavoriteRecipePage({super.key, required this.recipe});
+  const FavoriteRecipePage(
+      {super.key, required this.recipe, required this.isHistoryEntry});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,12 @@ class FavoriteRecipePage extends StatelessWidget {
           IconButton(
               onPressed: () async {
                 await showDialog(
-                    context: context,
-                    builder: (_) => _RecipePhotoDialog(
-                          path: recipe.photoPath,
-                        ));
+                  context: context,
+                  builder: (_) => _RecipePhotoDialog(
+                    isHistoryEntry: isHistoryEntry,
+                    path: recipe.photoPath,
+                  ),
+                );
               },
               icon: Icon(Icons.photo))
         ],
@@ -40,15 +44,18 @@ class FavoriteRecipePage extends StatelessWidget {
 
 class _RecipePhotoDialog extends StatelessWidget {
   final String path;
+  final bool isHistoryEntry;
 
-  const _RecipePhotoDialog({required this.path});
+  const _RecipePhotoDialog({required this.path, required this.isHistoryEntry});
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Image.file(
-        File(path),
-      ),
+      child: isHistoryEntry
+          ? Image.network(path)
+          : Image.file(
+              File(path),
+            ),
     );
   }
 }

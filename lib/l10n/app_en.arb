@@ -1,13 +1,27 @@
 {
   "appTitle": "Fat GPT",
   "appDescription": "Generate meal ideas with fridge photo",
+
+  "authSignIn":  "Sign in",
+  "authRegister":  "Register",
+  "authLoginNow":  "Login now",
+  "authRegisterNow":  "Register now",
+  "authNotAMember":  "Not a member?",
+  "authAlreadyHaveAnAccount":  "Already have an account?",
+  "authUsername":  "Username",
+  "authPassword":  "Password",
+
   "welcomeGetStarted": "Get started",
   "welcomeFavoritesButtonTitle": "Favorite recipes",
+  "welcomYourId": "Your user id:",
 
   "recipeTitle": "Recipe",
 
   "favoritesTitle": "Favorites",
   "favoritesEmpty": "Nothing to show yet",
+
+  "historyTitle": "History",
+  "historyEmpty": "Nothing to show yet",
 
   "error": "Error"
 }
