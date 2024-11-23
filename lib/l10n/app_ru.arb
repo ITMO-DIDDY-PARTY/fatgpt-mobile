@@ -1,13 +1,27 @@
 {
   "appTitle": "Fat GPT",
   "appDescription": "Генерируйте идеи для обедов по фото",
+
+  "authSignIn":  "Войти",
+  "authRegister":  "Зарегистрироваться",
+  "authLoginNow":  "Авторизуйтесь",
+  "authRegisterNow":  "Зарегистрируйтесь",
+  "authNotAMember":  "Нет аккаунта?",
+  "authAlreadyHaveAnAccount":  "Есть аккаунт?",
+  "authUsername":  "Логин",
+  "authPassword":  "Пароль",
+
   "welcomeGetStarted": "Начать",
   "welcomeFavoritesButtonTitle": "Сохранённые рецепты",
+  "welcomYourId": "Ваш идентификатор:",
 
   "recipeTitle": "Рецепт",
 
   "favoritesTitle": "Избранное",
   "favoritesEmpty": "Тут пока ничего нет",
+
+  "historyTitle": "История",
+  "historyEmpty": "Тут пока ничего нет",
 
   "error": "Ошибка"
 }

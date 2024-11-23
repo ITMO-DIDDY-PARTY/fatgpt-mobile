@@ -1,9 +1,13 @@
 import 'dart:ui';
 
+import 'package:dio/dio.dart';
 import 'package:fat_gpt/models/recipe.dart';
 import 'package:fat_gpt/pages/favorites_page.dart';
 import 'package:fat_gpt/pages/recipe_page.dart';
+import 'package:fat_gpt/services/auth/auth_service.dart';
+import 'package:fat_gpt/services/auth/user_data_service.dart';
 import 'package:fat_gpt/services/favorites/favorites_service_local.dart';
+import 'package:fat_gpt/services/history/history_service_remote.dart';
 import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +16,19 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../utils/style/colors.dart';
+import 'history_page.dart';
 
 class WelcomePage extends StatefulWidget {
+  final String userId;
   final PhotoAnalyzerApi photoAnalyzerApi;
+  final AuthRemoteService authRemoteService = AuthRemoteService();
+  final UserDataService userDataService;
 
-  const WelcomePage({
+  WelcomePage({
     super.key,
+    required this.userId,
     required this.photoAnalyzerApi,
+    required this.userDataService,
   });
 
   @override
@@ -27,6 +37,38 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   bool isLoading = false;
+  String? userId;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  void _fetchUserData() async {
+    try {
+      String fetchedUserId = await widget.userDataService.fetchUserData();
+      setState(() {
+        userId = fetchedUserId;
+      });
+    } on DioException catch (e) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx and is also not 304.
+      final response = e.response;
+      if (response != null) {
+        print(response.headers);
+        print(response.data);
+        print(response.requestOptions);
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        print(e.requestOptions);
+        print(e.message);
+      }
+    } catch (e) {
+      //pop the loading circle
+      print(e.toString());
+    }
+  }
 
   void _handleTapOnGetStarted(BuildContext context) async {
     setState(() {
@@ -38,8 +80,10 @@ class _WelcomePageState extends State<WelcomePage> {
 
     if (image != null) {
       try {
-        String recipeContent = await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
-        Recipe recipe = Recipe(recipeContent: recipeContent, photoPath: image.path);
+        String recipeContent =
+            await widget.photoAnalyzerApi.getRecipeFromPhoto(image);
+        Recipe recipe =
+            Recipe(recipeContent: recipeContent, photoPath: image.path);
         Navigator.of(context).push(MaterialPageRoute<void>(
           builder: (BuildContext context) => RecipePage(
             recipe: recipe,
@@ -81,6 +125,20 @@ class _WelcomePageState extends State<WelcomePage> {
     ));
   }
 
+  void _handleGoToHistory() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => HistoryPage(
+          historyService: HistoryServiceRemote(token: widget.userId),
+        ),
+      ),
+    );
+  }
+
+  void _handleLogout() {
+    widget.authRemoteService.logOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,6 +147,19 @@ class _WelcomePageState extends State<WelcomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         actions: [
+          IconButton(
+            onPressed: _handleLogout,
+            icon: Icon(Icons.logout),
+            iconSize: 36,
+            color: FatGPTColors.accent,
+          ),
+          Spacer(),
+          IconButton(
+            onPressed: _handleGoToHistory,
+            icon: Icon(Icons.history),
+            iconSize: 36,
+            color: FatGPTColors.accent,
+          ),
           IconButton(
             onPressed: _handleGoToFavorites,
             icon: Icon(Icons.favorite),
@@ -143,6 +214,13 @@ class _WelcomePageState extends State<WelcomePage> {
                               .textTheme
                               .titleMedium
                               ?.copyWith(color: FatGPTColors.textColor),
+                        ),
+                        Text(
+                          "${AppLocalizations.of(context)!.welcomYourId} ${userId ?? "unknown"}",
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(color: Colors.grey[600]),
                         ),
                         const SizedBox(
                           height: 12,
