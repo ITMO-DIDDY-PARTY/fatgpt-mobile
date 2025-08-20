@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:fat_gpt/components/my_button.dart';
-import 'package:fat_gpt/components/my_textfield.dart';
-import 'package:fat_gpt/services/auth/auth_service.dart';
-import 'package:fat_gpt/utils/style/colors.dart';
+import 'package:skincareai/components/my_button.dart';
+import 'package:skincareai/components/my_textfield.dart';
+import 'package:skincareai/services/auth/auth_service.dart';
+import 'package:skincareai/utils/style/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skincareai/l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -89,8 +89,8 @@ class _LoginPageState extends State<LoginPage> {
             begin: Alignment.topLeft,
             end: const Alignment(0.8, 1),
             colors: <Color>[
-              FatGPTColors.accentDark1,
-              FatGPTColors.accentDark2,
+              SkinCareAIColors.accentDark1,
+              SkinCareAIColors.accentDark2,
             ],
             // Gradient from https://learnui.design/tools/gradient-generator.html
             tileMode: TileMode.mirror,
@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge
-                      ?.copyWith(color: FatGPTColors.textColor),
+                      ?.copyWith(color: SkinCareAIColors.textColor),
                 ),
 
                 const SizedBox(height: 16),

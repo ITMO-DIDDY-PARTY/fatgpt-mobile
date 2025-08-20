@@ -1,6 +1,6 @@
 {
-  "appTitle": "Fat GPT",
-  "appDescription": "Генерируйте идеи для обедов по фото",
+  "appTitle": "SkinCareAI",
+  "appDescription": "ИИ-анализ кожи и рекомендации по уходу",
 
   "authSignIn":  "Войти",
   "authRegister":  "Зарегистрироваться",
@@ -12,12 +12,12 @@
   "authPassword":  "Пароль",
 
   "welcomeGetStarted": "Начать",
-  "welcomeFavoritesButtonTitle": "Сохранённые рецепты",
-  "welcomYourId": "Ваш идентификатор:",
+  "welcomeFavoritesButtonTitle": "Сохранённые результаты",
+  "welcomYourId": "Добро пожаловать, ",
 
   "recipeTitle": "Рецепт",
 
-  "favoritesTitle": "Избранное",
+  "favoritesTitle": "Сохраненное",
   "favoritesEmpty": "Тут пока ничего нет",
 
   "historyTitle": "История",

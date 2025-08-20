@@ -1,10 +1,17 @@
-import 'package:fat_gpt/utils/style/colors.dart';
+import 'package:skincareai/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 
-class FatGPTThemes {
+class SkinCareAIThemes {
 
   static final darkTheme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: FatGPTColors.accent),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: SkinCareAIColors.accent,
+      brightness: Brightness.dark,
+      primary: SkinCareAIColors.accent,
+      secondary: SkinCareAIColors.secondary,
+      surface: SkinCareAIColors.surface,
+      onSurface: SkinCareAIColors.onSurface,
+    ),
     useMaterial3: true,
     textTheme: const TextTheme(
       titleLarge: TextStyle(

@@ -1,8 +1,8 @@
-import 'package:fat_gpt/models/user.dart';
-import 'package:fat_gpt/pages/welcome_page.dart';
-import 'package:fat_gpt/services/auth/auth_service.dart';
-import 'package:fat_gpt/services/auth/user_data_service.dart';
-import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api_remote.dart';
+import 'package:skincareai/models/user.dart';
+import 'package:skincareai/pages/welcome_page.dart';
+import 'package:skincareai/services/auth/auth_service.dart';
+import 'package:skincareai/services/auth/user_data_service.dart';
+import 'package:skincareai/services/photo_analyzer/photo_analyzer_api_remote.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

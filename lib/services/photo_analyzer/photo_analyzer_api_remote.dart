@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
-import 'package:fat_gpt/services/network_constants.dart';
-import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
+import 'package:skincareai/services/network_constants.dart';
+import 'package:skincareai/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:developer';
 

@@ -1,11 +1,11 @@
-import 'package:fat_gpt/pages/auth_page.dart';
-import 'package:fat_gpt/pages/welcome_page.dart';
-import 'package:fat_gpt/services/auth/auth_service.dart';
-import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api_mocked.dart';
-import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api_remote.dart';
-import 'package:fat_gpt/utils/style/theme.dart';
+import 'package:skincareai/pages/auth_page.dart';
+import 'package:skincareai/pages/welcome_page.dart';
+import 'package:skincareai/services/auth/auth_service.dart';
+import 'package:skincareai/services/photo_analyzer/photo_analyzer_api_mocked.dart';
+import 'package:skincareai/services/photo_analyzer/photo_analyzer_api_remote.dart';
+import 'package:skincareai/utils/style/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skincareai/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fat GPT',
-      theme: FatGPTThemes.darkTheme,
+      title: 'SkinCareAI',
+      theme: SkinCareAIThemes.darkTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       home: AuthPage(),
