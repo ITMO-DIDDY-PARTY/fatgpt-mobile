@@ -1,6 +1,6 @@
 {
-  "appTitle": "Fat GPT",
-  "appDescription": "Generate meal ideas with fridge photo",
+  "appTitle": "SkinCareAI",
+  "appDescription": "AI-powered skincare analysis and recommendations",
 
   "authSignIn":  "Sign in",
   "authRegister":  "Register",
@@ -12,12 +12,12 @@
   "authPassword":  "Password",
 
   "welcomeGetStarted": "Get started",
-  "welcomeFavoritesButtonTitle": "Favorite recipes",
-  "welcomYourId": "Your user id:",
+  "welcomeFavoritesButtonTitle": "Saved",
+  "welcomYourId": "Welcome, ",
 
-  "recipeTitle": "Recipe",
+  "recipeTitle": "Analysis",
 
-  "favoritesTitle": "Favorites",
+  "favoritesTitle": "Saved",
   "favoritesEmpty": "Nothing to show yet",
 
   "historyTitle": "History",

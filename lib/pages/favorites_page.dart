@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:fat_gpt/models/recipe.dart';
-import 'package:fat_gpt/pages/favorite_recipe_page.dart';
-import 'package:fat_gpt/pages/recipe_page.dart';
-import 'package:fat_gpt/services/favorites/favorites_service.dart';
+import 'package:skincareai/models/recipe.dart';
+import 'package:skincareai/pages/favorite_recipe_page.dart';
+import 'package:skincareai/pages/recipe_page.dart';
+import 'package:skincareai/services/favorites/favorites_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skincareai/l10n/app_localizations.dart';
 
 class FavoritesPage extends StatefulWidget {
   final FavoritesService favoritesService;

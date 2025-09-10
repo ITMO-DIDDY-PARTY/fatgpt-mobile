@@ -1,5 +1,5 @@
-import 'package:fat_gpt/pages/login_page.dart';
-import 'package:fat_gpt/pages/register_page.dart';
+import 'package:skincareai/pages/login_page.dart';
+import 'package:skincareai/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {

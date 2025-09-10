@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:fat_gpt/models/user.dart';
-import 'package:fat_gpt/services/network_constants.dart';
+import 'package:skincareai/models/user.dart';
+import 'package:skincareai/services/network_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 

@@ -1,5 +1,5 @@
-import 'package:fat_gpt/models/recipe.dart';
-import 'package:fat_gpt/services/favorites/favorites_service.dart';
+import 'package:skincareai/models/recipe.dart';
+import 'package:skincareai/services/favorites/favorites_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FavoritesServiceLocal implements FavoritesService {

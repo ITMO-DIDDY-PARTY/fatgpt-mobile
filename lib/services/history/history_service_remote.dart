@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:fat_gpt/models/recipe.dart';
-import 'package:fat_gpt/services/network_constants.dart';
+import 'package:skincareai/models/recipe.dart';
+import 'package:skincareai/services/network_constants.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'history_service.dart';

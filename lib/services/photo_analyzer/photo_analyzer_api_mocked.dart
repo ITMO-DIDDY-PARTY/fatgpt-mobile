@@ -1,4 +1,4 @@
-import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
+import 'package:skincareai/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PhotoAnalyzerAPIMocked implements PhotoAnalyzerApi {

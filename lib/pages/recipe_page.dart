@@ -1,11 +1,11 @@
-import 'package:fat_gpt/models/recipe.dart';
-import 'package:fat_gpt/services/favorites/favorites_service.dart';
-import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
+import 'package:skincareai/models/recipe.dart';
+import 'package:skincareai/services/favorites/favorites_service.dart';
+import 'package:skincareai/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skincareai/l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RecipePage extends StatefulWidget {

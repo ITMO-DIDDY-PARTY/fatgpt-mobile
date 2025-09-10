@@ -1,18 +1,18 @@
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
-import 'package:fat_gpt/models/recipe.dart';
-import 'package:fat_gpt/pages/favorites_page.dart';
-import 'package:fat_gpt/pages/recipe_page.dart';
-import 'package:fat_gpt/services/auth/auth_service.dart';
-import 'package:fat_gpt/services/auth/user_data_service.dart';
-import 'package:fat_gpt/services/favorites/favorites_service_local.dart';
-import 'package:fat_gpt/services/history/history_service_remote.dart';
-import 'package:fat_gpt/services/photo_analyzer/photo_analyzer_api.dart';
+import 'package:skincareai/models/recipe.dart';
+import 'package:skincareai/pages/favorites_page.dart';
+import 'package:skincareai/pages/recipe_page.dart';
+import 'package:skincareai/services/auth/auth_service.dart';
+import 'package:skincareai/services/auth/user_data_service.dart';
+import 'package:skincareai/services/favorites/favorites_service_local.dart';
+import 'package:skincareai/services/history/history_service_remote.dart';
+import 'package:skincareai/services/photo_analyzer/photo_analyzer_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:skincareai/l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../utils/style/colors.dart';
@@ -151,20 +151,20 @@ class _WelcomePageState extends State<WelcomePage> {
             onPressed: _handleLogout,
             icon: Icon(Icons.logout),
             iconSize: 36,
-            color: FatGPTColors.accent,
+            color: SkinCareAIColors.accent,
           ),
           Spacer(),
           IconButton(
             onPressed: _handleGoToHistory,
             icon: Icon(Icons.history),
             iconSize: 36,
-            color: FatGPTColors.accent,
+            color: SkinCareAIColors.accent,
           ),
           IconButton(
             onPressed: _handleGoToFavorites,
             icon: Icon(Icons.favorite),
             iconSize: 36,
-            color: FatGPTColors.accent,
+            color: SkinCareAIColors.accent,
           ),
         ],
       ),
@@ -174,8 +174,8 @@ class _WelcomePageState extends State<WelcomePage> {
             begin: Alignment.topLeft,
             end: const Alignment(0.8, 1),
             colors: <Color>[
-              FatGPTColors.accentDark1,
-              FatGPTColors.accentDark2,
+              SkinCareAIColors.accentDark1,
+              SkinCareAIColors.accentDark2,
             ],
             // Gradient from https://learnui.design/tools/gradient-generator.html
             tileMode: TileMode.mirror,
@@ -206,14 +206,14 @@ class _WelcomePageState extends State<WelcomePage> {
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
-                              ?.copyWith(color: FatGPTColors.textColor),
+                              ?.copyWith(color: SkinCareAIColors.textColor),
                         ),
                         Text(
                           AppLocalizations.of(context)!.appDescription,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium
-                              ?.copyWith(color: FatGPTColors.textColor),
+                              ?.copyWith(color: SkinCareAIColors.textColor),
                         ),
                         Text(
                           "${AppLocalizations.of(context)!.welcomYourId} ${userId ?? "unknown"}",
@@ -238,7 +238,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       ? CircularProgressIndicator()
                       : ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: FatGPTColors.accent,
+                            backgroundColor: SkinCareAIColors.accent,
                             minimumSize: Size.fromHeight(48),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -253,7 +253,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 .textTheme
                                 .labelMedium
                                 ?.copyWith(
-                                    color: FatGPTColors.accentButtonTextColor),
+                                    color: SkinCareAIColors.accentButtonTextColor),
                           ),
                         );
                 }()
